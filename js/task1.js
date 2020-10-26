@@ -28,7 +28,7 @@ isGalleryRef.addEventListener('click', onOpenClick);
 
 const lightBoxRef = document.querySelector('div.lightbox');
 const openModalRef = document.querySelector('.lightbox__image');
-const BtnCloseClickRef = document.querySelector('button[data-action="close-lightbox"]');
+const btnCloseClickRef = document.querySelector('button[data-action="close-lightbox"]');
 const overlayRef = document.querySelector('div.lightbox__overlay');
 
 
@@ -40,8 +40,10 @@ function onOpenClick(evt) {
   lightBoxRef.classList.add('is-open');  
   openModalRef.src = evt.target.dataset.source;
   window.addEventListener('keydown', onEscKeyPress);  
-  BtnCloseClickRef.addEventListener('click', onBtnCloseClick,{once:true});  
-  overlayRef.addEventListener('click', onOverlay, { once: true });
+  btnCloseClickRef.addEventListener('click', onCloseModal,{once:true});  
+  overlayRef.addEventListener('click', onCloseModal, { once: true });
+  // btnCloseClickRef.addEventListener('click', onBtnCloseClick,{once:true});  
+  // overlayRef.addEventListener('click', onOverlay, { once: true });
   window.addEventListener('keydown', onKeyboardPress);  
 }
 
@@ -59,19 +61,19 @@ function onCloseModal() {
   window.removeEventListener('keydown', onEscKeyPress);
 }
 
-function onBtnCloseClick(evt) {
-  if (evt.target.nodeName !== 'BUTTON') {
-    return
-  }
-  onCloseModal()
-}
+// function onBtnCloseClick(evt) {
+//   if (evt.target.nodeName !== 'BUTTON') {
+//     return
+//   }
+//   onCloseModal()
+// }
 
-function onOverlay(evt) {
-  if (evt.target !== evt.currentTarget) {
-    return
-  }
- onCloseModal()
-}
+// function onOverlay(evt) {
+//   if (evt.target !== evt.currentTarget) {
+//     return
+//   }
+//  onCloseModal()
+// }
 
 function onKeyboardPress(event) {
   
